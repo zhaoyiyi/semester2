@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  One root tag,  Case sensitive,  attributes should be in quotes -->
+<custormer id="20">
+  <name>jkj;    lj</name>
+  <age>asdf    asdf</age>
+  <adf>alksdjf</adf>
+  <asdf>asldfkjasldf</asdf>
+  <alaskdjf>asdflkjasdfl</alaskdjf>
+  <cdata><![CDATA[alkdsfja]]></cdata>
+</custormer>

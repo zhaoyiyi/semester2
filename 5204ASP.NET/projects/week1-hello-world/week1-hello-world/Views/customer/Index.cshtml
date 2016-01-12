@@ -1,0 +1,22 @@
+﻿@model week1_hello_world.Models.Customer
+
+@{
+    ViewBag.Title = "Customer";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>Customers Detail: @Model.CustomerName</h2>
+    </div>
+    
+   <div class="panel-body">
+       <p>
+           customer code: @Model.CustomerCode
+       </p>
+       <p>
+           customer balance: @Model.Account
+       </p>
+   </div>
+     
+</div>
+
+
