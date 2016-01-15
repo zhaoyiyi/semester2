@@ -1,1 +1,5 @@
-./5204ASP.NET/**/packages
+5204ASP.NET/**/packages/
+5204ASP.NET/**/*.vs
+5204ASP.NET/**/*.suo
+5204ASP.NET/**/[Dd]ebug
+5204ASP.NET/**/*.(pdb | obj | tmp | log)
