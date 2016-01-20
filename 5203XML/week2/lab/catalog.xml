@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog [
+<!ELEMENT catalog (product+)>
+  <!ELEMENT product (name,thumbnail*,images*,description?,sizes*,colors*)>
+  <!ELEMENT name (#PCDATA)>
+  <!ELEMENT description (#PCDATA)>
+  <!ELEMENT thumbnail (#PCDATA)>
+  <!ELEMENT images (image+)>
+    <!ELEMENT image (#PCDATA)>
+  <!ELEMENT sizes (size+)>
+    <!ELEMENT size (#PCDATA)>
+  <!ELEMENT colors (color+)>
+    <!ELEMENT color (#PCDATA)>
+
+  <!ATTLIST product
+    sku CDATA #REQUIRED
+    category CDATA #REQUIRED
+    isFeatured CDATA #REQUIRED
+    price CDATA #REQUIRED>
+  <!ATTLIST image name CDATA #IMPLIED>
+  <!ATTLIST sizes label CDATA #IMPLIED>
+
+]>
+<catalog>
+  <product sku="12345" category="aaa" isFeatured="true" price="20">
+    <name>asdf</name>
+  </product>
+
+  <product sku="32" category="bb" isFeatured="true" price="220">
+    <name>asdf</name>
+    <thumbnail>asdf</thumbnail>
+    <images>
+      <image>adf</image>
+    </images>
+    <description>asdfasdfas</description>
+    <sizes>
+      <size>asdfasdf</size>
+      <size>asdfasdf</size>
+      <size>asdfasdf</size>
+    </sizes>
+    <colors>
+      <color>asdfasdf</color>
+      <color>asdfas</color>
+    </colors>
+  </product>
+
+</catalog>
