@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<books>
+  <book>
+    <booktitle>The Beatles</booktitle>
+    <ISBN>1-123456-78-0</ISBN>
+    <authors>
+      <author_name>John,</author_name>
+      <author_name>Paul,</author_name>
+      <author_name>George,</author_name>
+      <author_name>Ringo</author_name>
+    </authors>
+    <description>Trace the beginnings of a group of young men who revolutionized the popular music culture. Go back in
+      time and view highlights in the life of four men who dared to bring about change. Book includes lyrics of the
+      Beatles' most popular songs.
+    </description>
+    <price Can="59.99" US="39.99"/>
+  </book>
+  <book>
+    <booktitle>Star Trek - Next Generation</booktitle>
+    <ISBN>1-123456-78-1</ISBN>
+    <authors>
+      <author_name>Picard,</author_name>
+      <author_name>Riker,</author_name>
+      <author_name>Data,</author_name>
+      <author_name>Troy,</author_name>
+      <author_name>Crusher,</author_name>
+      <author_name>Worf,</author_name>
+      <author_name>Geordi</author_name>
+    </authors>
+    <description>Action packed pictoral presentation of high adventure sci-fi. Go where no one has dated to go before.
+      Highlights of one of the most popular TV series ever. A great family book to own and cherish for years.
+    </description>
+    <price Can="49.99" US="35.99"/>
+  </book>
+</books>

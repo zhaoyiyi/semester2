@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="books" type="booksType"/>
+  <xs:complexType name="booksType">
+    <xs:sequence>
+      <xs:element type="bookType" name="book" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bookType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="booktitle"/>
+      <xs:element type="xs:string" name="ISBN"/>
+      <xs:element type="authorsType" name="authors"/>
+      <xs:element type="xs:string" name="description"/>
+      <xs:element type="priceType" name="price"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authorsType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="author_name" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="priceType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="Can" use="optional"/>
+        <xs:attribute type="xs:string" name="US" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+</xs:schema>
