@@ -10,6 +10,23 @@ const URL: string = `http://webservices.nextbus.com/service/publicXMLFeed?a=ttc`
 export class RouteService{
   constructor(private _http: Http){}
 
+  getBusLocations(num){
+    // TODO: change `t`
+    return this.query('vehicleLocations', `r=${num}`, `t=2`).map( res => {
+      let buses = jQuery.parseXML( res.text() ).querySelectorAll('vehicle');
+      return jQuery.makeArray(buses).map(bus => {
+        return {
+          id: +bus.getAttribute('id'),
+          routeTag: bus.getAttribute('routeTag'),
+          dirTag: bus.getAttribute('dirTag'),
+          lat: +bus.getAttribute('lat'),
+          lng: +bus.getAttribute('lon'),
+          heading: +bus.getAttribute('heading')
+        }
+      })
+    });
+  }
+
   getRouteList(){
     return this.query('routeList')
       .map( res => {
@@ -25,18 +42,33 @@ export class RouteService{
         })
       })
   }
+  // TODO: need refactor
+  // 1. parseXML
+  // 2. select 'tag name'
+  // 3. make array
+  // 4. map result and start 2 if needed
+  // 5. return obj with getAttribute('attr')
+
+  getAttr(XMLObj, tagNames){
+    // tag name has child?
+    // no, return attrs, yes,
+    let i = 0;
+    let tag = XMLObj.querySelectorAll( tagNames[i] );
+  }
+
   getRoute(num){
     return this.query( 'routeConfig', `r=${num}`)
       .map( res => {
-        let info = jQuery.parseXML( res.text() ).querySelectorAll('point');
-        return jQuery.makeArray(info).map( routeInfo => {
-          return {
-            // call it lng so it can be directly used in google map,
-            // and make sure it's a number
-            lat: +routeInfo.getAttribute('lat'),
-            lng: +routeInfo.getAttribute('lon')
-          };
-          // return routeInfo.getAttribute('path');
+        let paths = jQuery.parseXML( res.text() ).querySelectorAll('path');
+        return jQuery.makeArray(paths).map( path => {
+          return jQuery.makeArray( path.querySelectorAll('point') ).map( point => {
+            return {
+              // call it lng so it can be directly used in google map,
+              // and make sure it's a number
+              lat: +point.getAttribute('lat'),
+              lng: +point.getAttribute('lon')
+            }
+          } )
         })
       })
   }

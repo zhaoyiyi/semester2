@@ -1,11 +1,10 @@
 System.register(['angular2/core', 'angular2/http', 'angular2/common', './route.service'], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
-        switch (arguments.length) {
-            case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
-            case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
-            case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
-        }
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
@@ -33,7 +32,12 @@ System.register(['angular2/core', 'angular2/http', 'angular2/common', './route.s
                     this._routeService = _routeService;
                     this.routeControl = new common_1.Control('');
                     this.routeChange = new core_1.EventEmitter();
-                    this.routeControl.valueChanges.subscribe(function (data) { return _this.routeChange.emit(_this.getRoute(data)); }, function (err) { return _this.routeChange.emit(err); });
+                    this.locationChange = new core_1.EventEmitter();
+                    this.routeControl.valueChanges.subscribe(function (routeNum) {
+                        console.log('selected route: ', routeNum);
+                        _this.emitRouteInfo(routeNum);
+                        _this.emitBusLocations(routeNum);
+                    }, function (err) { return console.log('err in route component when emitting', err); });
                 }
                 RouteComponent.prototype.ngOnInit = function () {
                     this.getRouteList();
@@ -41,22 +45,39 @@ System.register(['angular2/core', 'angular2/http', 'angular2/common', './route.s
                 RouteComponent.prototype.getRouteList = function () {
                     var _this = this;
                     this._routeService.getRouteList()
-                        .subscribe(function (data) { return _this.routes = data; }, function (err) { return console.log(err); }, function () { return console.log('finish loading routes'); });
+                        .subscribe(function (data) { return _this.routes = data; }, function (err) { return console.log(err); }, function () { return console.log('finish loading route list'); });
                 };
-                RouteComponent.prototype.getRoute = function (routeNum) {
-                    return this._routeService.getRoute(routeNum);
+                RouteComponent.prototype.emitRouteInfo = function (routeNum) {
+                    console.log('emitting route info...');
+                    this.routeChange.emit(this._routeService.getRoute(routeNum));
+                };
+                RouteComponent.prototype.getBuses = function (routeNum) {
+                    var out = this._routeService.getBusLocations(routeNum);
+                    return out;
+                };
+                RouteComponent.prototype.emitBusLocations = function (routeNum) {
+                    var _this = this;
+                    if (this.autoUpdate) {
+                        clearInterval(this.autoUpdate);
+                        console.log('route component clear interval');
+                    }
+                    this.locationChange.emit(this.getBuses(routeNum));
+                    this.autoUpdate = setInterval(function () {
+                        console.log('emitting bus locations stream');
+                        _this.locationChange.emit(_this.getBuses(routeNum));
+                    }, 10000);
                 };
                 RouteComponent = __decorate([
                     core_1.Component({
                         selector: 'route',
                         template: "\n    <h2>Route List</h2>\n    <select [ngFormControl]=\"routeControl\">\n      <option *ngFor=\"#route of routes\" [value]=\"route.tag\">{{route.title}}</option>\n    </select>\n  ",
                         providers: [http_1.HTTP_PROVIDERS, route_service_1.RouteService],
-                        outputs: ['routeChange']
+                        outputs: ['routeChange', 'locationChange']
                     }), 
                     __metadata('design:paramtypes', [route_service_1.RouteService])
                 ], RouteComponent);
                 return RouteComponent;
-            })();
+            }());
             exports_1("RouteComponent", RouteComponent);
         }
     }

@@ -1,11 +1,10 @@
 System.register(['angular2/core'], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
-        switch (arguments.length) {
-            case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
-            case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
-            case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
-        }
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
@@ -21,6 +20,52 @@ System.register(['angular2/core'], function(exports_1) {
             MapService = (function () {
                 function MapService() {
                 }
+                Object.defineProperty(MapService.prototype, "isInitialized", {
+                    get: function () { return !!this._map; },
+                    enumerable: true,
+                    configurable: true
+                });
+                MapService.prototype.clear = function (obj) {
+                    obj.map(function (line) { return line.setMap(null); });
+                };
+                MapService.prototype.drawPath = function (paths, clear) {
+                    var _this = this;
+                    if (clear === void 0) { clear = true; }
+                    if (this._lines && clear)
+                        this.clear(this._lines);
+                    this._lines = paths.map(function (path) {
+                        var line = new google.maps.Polyline({
+                            path: path,
+                            strokeColor: '#FF0000',
+                            strokeOpacity: 1.0,
+                            strokeWeight: 2
+                        });
+                        line.setMap(_this._map);
+                        return line;
+                    });
+                };
+                MapService.prototype.updateMarker = function (newPosition) {
+                    if (this._buses)
+                        console.log(this._buses);
+                };
+                MapService.prototype.setMarker = function (buses) {
+                    var _this = this;
+                    if (this._buses)
+                        this.clear(this._buses);
+                    this._buses = buses.map(function (bus) {
+                        return new google.maps.Marker({
+                            position: { lat: bus.lat, lng: bus.lng },
+                            icon: {
+                                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                                scale: 5,
+                                strokeWeight: 2,
+                                strokeColor: '#00F',
+                                rotation: bus.heading
+                            },
+                            map: _this._map
+                        });
+                    });
+                };
                 MapService.prototype.loadMap = function (mapName) {
                     var _this = this;
                     var script = document.createElement('script');
@@ -32,31 +77,20 @@ System.register(['angular2/core'], function(exports_1) {
                     (window)['initMap'] = function () { return _this.initMap(mapName); };
                 };
                 MapService.prototype.initMap = function (mapName) {
-                    var map = new google.maps.Map(document.querySelector(mapName), {
+                    this._map = new google.maps.Map(document.querySelector(mapName), {
                         center: {
-                            lat: 43.59432,
-                            lng: -79.5340999
+                            lat: 43.646389,
+                            lng: -79.408959
                         },
                         zoom: 13
                     });
-                    var line = new google.maps.Polyline({
-                        strokeColor: '#FF0000',
-                        strokeOpacity: 1.0,
-                        strokeWeight: 2
-                    });
-                    line.setMap(map);
-                };
-                MapService.prototype.drawLine = function (coords) {
-                    if (coords) {
-                        console.log(coords);
-                    }
                 };
                 MapService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])
                 ], MapService);
                 return MapService;
-            })();
+            }());
             exports_1("MapService", MapService);
         }
     }
