@@ -12,15 +12,17 @@
     if(isValid){
       xhr({
         method: 'POST',
-        url: 'process.php',
+        url: 'index.php',
         data: new FormData( this )
       })
       .then(function(data){
         document.querySelector('footer').innerHTML = data;
       });
+    }else{
+      return false;
     }
 
-    return false;
+    
   };
 
 

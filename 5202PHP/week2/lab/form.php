@@ -1,16 +1,52 @@
+<?php
+var_dump($_POST);
+echo '<br />';
+
+
+
+
+$username=$password=$favNumber=$option=$checkbox=$err='';
+
+
+if( isset($_POST['btnLogin']) ){
+  $username = validate('username');
+  $password = validate('password');
+  $favNumber = validate('favNumber');
+  $option = validate('option');
+  $checkbox = validate('checkbox');
+
+}
+function validate($inputName){
+  global $err;
+  // $value = isset($_POST[$inputName]) && $_POST[$inputName];
+  $value = $_POST[$inputName];
+  if(strlen($value) != 2){
+    $err .= ' <br />' . $inputName . $value . ' is invalid';
+  }
+  return $value;
+}
+?>
+
+
+
 <form id="loginForm" class="form-horizontal" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'] ) ?>">
+
+  <div><?php echo $err; ?></div>
+
   <!-- username -->
   <div class="form-group">
     <label for="username" class="col-sm-2 control-label">Username</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+      <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+      value="<?php echo htmlspecialchars($username) ?>">
     </div>
   </div>
   <!-- password -->
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password">
+      <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password"
+      value="<?php echo htmlspecialchars($password) ?>">
     </div>
   </div>
   <!-- drop down list -->
