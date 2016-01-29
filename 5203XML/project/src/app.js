@@ -1,11 +1,10 @@
 System.register(['angular2/core', './bus/route.component', './map/map.component'], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
-        switch (arguments.length) {
-            case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
-            case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
-            case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
-        }
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
@@ -26,24 +25,29 @@ System.register(['angular2/core', './bus/route.component', './map/map.component'
         execute: function() {
             App = (function () {
                 function App() {
+                    this.routeInfoStream = {};
                 }
                 App.prototype.ngOnInit = function () {
                 };
                 App.prototype.onRouteChange = function (routeInfo) {
-                    var _this = this;
-                    routeInfo.subscribe(function (data) { return _this.path = data; });
+                    this.routeInfoStream = routeInfo;
+                    console.log('transferring route info...');
+                };
+                App.prototype.onLocationChange = function (busLocations) {
+                    console.log('transferring bus locations...');
+                    this.busLocationsStream = busLocations;
                 };
                 App = __decorate([
                     core_1.Component({
                         selector: "app",
-                        template: "\n    <map [path]=\"path\"></map>\n    <route (routeChange)=\"onRouteChange($event)\"></route>\n  ",
+                        template: "\n    <map [routeInfoStream]=\"routeInfoStream\" [busLocationsStream]=\"busLocationsStream\"></map>\n\n    <route (routeChange)=\"onRouteChange($event)\"\n      (locationChange)='onLocationChange($event)'></route>\n  ",
                         directives: [route_component_1.RouteComponent, map_component_1.MapComponent],
-                        inputs: ['routeChange']
+                        inputs: ['routeChange', 'locationChange']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], App);
                 return App;
-            })();
+            }());
             exports_1("App", App);
         }
     }

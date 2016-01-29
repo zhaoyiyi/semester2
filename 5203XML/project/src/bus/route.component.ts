@@ -14,22 +14,30 @@ import {RouteService} from './route.service';
     </select>
   `,
   providers: [HTTP_PROVIDERS, RouteService],
-  outputs: ['routeChange']
+  outputs: ['routeChange', 'locationChange']
 })
 export class RouteComponent implements OnInit{
   routes: any;
   routeControl: Control = new Control('');
   routeChange = new EventEmitter();
+  locationChange = new EventEmitter();
+  autoUpdate: any;
 
   constructor(private _routeService: RouteService){
+    // output route coords and bus locations
     this.routeControl.valueChanges.subscribe(
-      data => this.routeChange.emit( this.getRoute(data) ),
-      err => this.routeChange.emit( err )
+      routeNum => {
+        console.log('selected route: ', routeNum);
+        this.emitRouteInfo(routeNum); // emit route observable
+        this.emitBusLocations(routeNum);
+      },
+      err => console.log( 'err in route component when emitting',err )
     )
   }
 
   ngOnInit(){
     this.getRouteList();
+
   }
 
   getRouteList(){
@@ -37,11 +45,29 @@ export class RouteComponent implements OnInit{
       .subscribe(
           data => this.routes = data,
           err => console.log(err),
-          () => console.log('finish loading routes')
+          () => console.log('finish loading route list')
         );
   }
+
   // return observable
-  getRoute(routeNum){
-    return this._routeService.getRoute(routeNum)
+  emitRouteInfo(routeNum){
+    console.log('emitting route info...')
+    this.routeChange.emit( this._routeService.getRoute(routeNum));
+  }
+  getBuses(routeNum){
+    let out = this._routeService.getBusLocations(routeNum);
+    return out;
+  }
+  emitBusLocations(routeNum){
+    if(this.autoUpdate) {
+      clearInterval(this.autoUpdate);
+      console.log('route component clear interval')
+    }
+    this.locationChange.emit( this.getBuses(routeNum) );
+    this.autoUpdate = setInterval( () => {
+      console.log('emitting bus locations stream');
+      this.locationChange.emit( this.getBuses(routeNum) );
+    }, 10000)
+
   }
 }
