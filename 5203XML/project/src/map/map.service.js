@@ -26,7 +26,15 @@ System.register(['angular2/core'], function(exports_1) {
                     configurable: true
                 });
                 MapService.prototype.clear = function (obj) {
-                    obj.map(function (line) { return line.setMap(null); });
+                    console.log('route:', obj);
+                    if (obj) {
+                        obj.map(function (line) { return line.setMap(null); });
+                    }
+                };
+                MapService.prototype.clearBuses = function (buses) {
+                    if (buses) {
+                        buses.map(function (bus) { return bus.marker.setMap(null); });
+                    }
                 };
                 MapService.prototype.drawPath = function (paths, clear) {
                     var _this = this;
@@ -44,26 +52,65 @@ System.register(['angular2/core'], function(exports_1) {
                         return line;
                     });
                 };
+                MapService.prototype.animateMarker = function (marker, coords, time) {
+                    if (time === void 0) { time = 5000; }
+                    var lat = marker.getPosition().lat();
+                    var lng = marker.getPosition().lng();
+                    var latDiff = coords.lat - lat;
+                    var lngDiff = coords.lng - lng;
+                    var stepNum = time / 20;
+                    var i = 0;
+                    var animation = setInterval(function () {
+                        if (i >= stepNum) {
+                            clearInterval(animation);
+                        }
+                        else {
+                            lat += latDiff / stepNum;
+                            lng += lngDiff / stepNum;
+                            marker.setPosition({ lat: lat, lng: lng });
+                            i++;
+                        }
+                    }, 20);
+                };
                 MapService.prototype.updateMarker = function (newPosition) {
-                    if (this._buses)
-                        console.log(this._buses);
+                    var _this = this;
+                    if (this._buses) {
+                        console.log('updating bus locations...', this._buses);
+                        this._buses.map(function (bus, idx) {
+                            if (newPosition.length === _this._buses.length && bus.id === newPosition[idx].id) {
+                                _this.animateMarker(bus.marker, newPosition[idx], 5000);
+                                bus.marker.setIcon(_this.iconOption(newPosition[idx]));
+                            }
+                            else {
+                                _this.setMarker(newPosition[idx]);
+                            }
+                        });
+                    }
+                };
+                MapService.prototype.iconOption = function (option) {
+                    return {
+                        path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                        scale: 5,
+                        strokeWeight: 2,
+                        strokeColor: '#00F',
+                        rotation: option.heading
+                    };
                 };
                 MapService.prototype.setMarker = function (buses) {
                     var _this = this;
                     if (this._buses)
-                        this.clear(this._buses);
+                        this.clearBuses(this._buses);
+                    console.log('buses in bus service:', this._buses);
                     this._buses = buses.map(function (bus) {
-                        return new google.maps.Marker({
+                        var marker = new google.maps.Marker({
                             position: { lat: bus.lat, lng: bus.lng },
-                            icon: {
-                                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-                                scale: 5,
-                                strokeWeight: 2,
-                                strokeColor: '#00F',
-                                rotation: bus.heading
-                            },
+                            icon: _this.iconOption(bus),
                             map: _this._map
                         });
+                        return {
+                            id: bus.id,
+                            marker: marker
+                        };
                     });
                 };
                 MapService.prototype.loadMap = function (mapName) {
@@ -95,3 +142,4 @@ System.register(['angular2/core'], function(exports_1) {
         }
     }
 });
+//# sourceMappingURL=map.service.js.map

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', 'rxjs/add/operator/distinctUntilChanged'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19,7 +19,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
             function (http_1_1) {
                 http_1 = http_1_1;
             },
-            function (_1) {}],
+            function (_1) {},
+            function (_2) {}],
         execute: function() {
             URL = "http://webservices.nextbus.com/service/publicXMLFeed?a=ttc";
             RouteService = (function () {
@@ -61,7 +62,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                     return this.query('routeConfig', "r=" + num)
                         .map(function (res) {
                         var paths = jQuery.parseXML(res.text()).querySelectorAll('path');
-                        return jQuery.makeArray(paths).map(function (path) {
+                        var coords = jQuery.makeArray(paths).map(function (path) {
                             return jQuery.makeArray(path.querySelectorAll('point')).map(function (point) {
                                 return {
                                     lat: +point.getAttribute('lat'),
@@ -69,6 +70,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                                 };
                             });
                         });
+                        return { id: num, coords: coords };
                     });
                 };
                 RouteService.prototype.query = function (cmd) {
@@ -88,3 +90,4 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
         }
     }
 });
+//# sourceMappingURL=route.service.js.map

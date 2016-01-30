@@ -21,34 +21,21 @@ import * as Rx from 'rxjs/Rx';
 })
 export class App implements OnInit{
   // take path coords emitted by route component and pass it to map
-  routeInfoStream: any = {};
+  routeInfoStream: any;
   busLocationsStream:  any;
   constructor(){}
 
   ngOnInit(){
 
   }
-  // take observables emitted from route component
-  // {route: ob, buses: ob}
-  onRouteChange(routeInfo){
-  /*  let routesStream = routeInfo.routes;
-    let busesStream = routeInfo.buses;
-    let info = Rx.Observable.combineLatest(routesStream, busesStream,
-      (routes, buses) => {
-        return {
-          routes, buses
-        }
-      });
-    info.subscribe(data => this.info = data);*/
 
-    // routeInfo.subscribe(data => this.info = data);
+  onRouteChange(routeInfo){
     this.routeInfoStream = routeInfo;
     console.log('transferring route info...');
   }
   onLocationChange(busLocations){
-    // busLocations.subscribe( data => this.busLocations = data);
-    console.log('transferring bus locations...');
     this.busLocationsStream = busLocations;
+    console.log('transferring bus locations...');
   }
 
 }

@@ -25,7 +25,6 @@ System.register(['angular2/core', './bus/route.component', './map/map.component'
         execute: function() {
             App = (function () {
                 function App() {
-                    this.routeInfoStream = {};
                 }
                 App.prototype.ngOnInit = function () {
                 };
@@ -34,8 +33,8 @@ System.register(['angular2/core', './bus/route.component', './map/map.component'
                     console.log('transferring route info...');
                 };
                 App.prototype.onLocationChange = function (busLocations) {
-                    console.log('transferring bus locations...');
                     this.busLocationsStream = busLocations;
+                    console.log('transferring bus locations...');
                 };
                 App = __decorate([
                     core_1.Component({
@@ -52,3 +51,4 @@ System.register(['angular2/core', './bus/route.component', './map/map.component'
         }
     }
 });
+//# sourceMappingURL=app.js.map

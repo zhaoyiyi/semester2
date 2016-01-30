@@ -52,14 +52,19 @@ export class RouteComponent implements OnInit{
   // return observable
   emitRouteInfo(routeNum){
     console.log('emitting route info...')
-    this.routeChange.emit( this._routeService.getRoute(routeNum));
+    this.routeChange.emit( this._routeService.getRoute(routeNum) )
+    /*this._routeService.getRoute(routeNum)
+      .subscribe(
+        data => this.routeChange.emit( data )
+      )*/
+
   }
   getBuses(routeNum){
-    let out = this._routeService.getBusLocations(routeNum);
-    return out;
+    return this._routeService.getBusLocations(routeNum);
   }
+
   emitBusLocations(routeNum){
-    if(this.autoUpdate) {
+    /*if(this.autoUpdate) {
       clearInterval(this.autoUpdate);
       console.log('route component clear interval')
     }
@@ -67,7 +72,9 @@ export class RouteComponent implements OnInit{
     this.autoUpdate = setInterval( () => {
       console.log('emitting bus locations stream');
       this.locationChange.emit( this.getBuses(routeNum) );
-    }, 10000)
+    }, 10000)*/
+
+    this.locationChange.emit( this.getBuses(routeNum) );
 
   }
 }

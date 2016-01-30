@@ -52,20 +52,10 @@ System.register(['angular2/core', 'angular2/http', 'angular2/common', './route.s
                     this.routeChange.emit(this._routeService.getRoute(routeNum));
                 };
                 RouteComponent.prototype.getBuses = function (routeNum) {
-                    var out = this._routeService.getBusLocations(routeNum);
-                    return out;
+                    return this._routeService.getBusLocations(routeNum);
                 };
                 RouteComponent.prototype.emitBusLocations = function (routeNum) {
-                    var _this = this;
-                    if (this.autoUpdate) {
-                        clearInterval(this.autoUpdate);
-                        console.log('route component clear interval');
-                    }
                     this.locationChange.emit(this.getBuses(routeNum));
-                    this.autoUpdate = setInterval(function () {
-                        console.log('emitting bus locations stream');
-                        _this.locationChange.emit(_this.getBuses(routeNum));
-                    }, 10000);
                 };
                 RouteComponent = __decorate([
                     core_1.Component({
@@ -82,3 +72,4 @@ System.register(['angular2/core', 'angular2/http', 'angular2/common', './route.s
         }
     }
 });
+//# sourceMappingURL=route.component.js.map

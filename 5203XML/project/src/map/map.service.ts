@@ -2,13 +2,6 @@ import {Injectable} from 'angular2/core';
 declare var google;
 
 
-// const SYMBOL = {
-//   path: '',
-//   strokeColor: '#F00',
-//   fillColor: '#F00',
-//   fillOpacity: 1
-// };
-
 @Injectable()
 export class MapService{
   private _map: any;
@@ -21,7 +14,15 @@ export class MapService{
 
   // clears stored info on the map.
   clear(obj){
-    obj.map( line => line.setMap(null));
+    console.log('route:', obj);
+    if(obj){
+      obj.map( line => line.setMap(null));
+    }
+  }
+  clearBuses(buses){
+    if(buses){
+      buses.map( bus => bus.marker.setMap(null));
+    }
   }
   // option to clean other lines before drawing
   drawPath(paths, clear=true){
@@ -36,28 +37,70 @@ export class MapService{
       })
       line.setMap(this._map);
       return line;
-    })
+    });
+
   }
 
+  animateMarker(marker, coords, time=5000){
+    let lat = marker.getPosition().lat();
+    let lng = marker.getPosition().lng();
+    let latDiff = coords.lat - lat;
+    let lngDiff = coords.lng - lng;
+    let stepNum = time / 20;
+    let i = 0;
+
+    let animation = setInterval( () => {
+      if(i >= stepNum ) {
+        clearInterval(animation);
+      }else{
+        lat += latDiff / stepNum;
+        lng += lngDiff / stepNum;
+        marker.setPosition({lat: lat, lng: lng});
+        i++;
+      }
+    }, 20);
+  }
+  // TODO: need better way to update buses on the Map
+  // ie, add and delete without refreshing
   updateMarker(newPosition){
-    if(this._buses) console.log(this._buses);
+    if(this._buses){
+      console.log('updating bus locations...',this._buses);
+      this._buses.map( (bus, idx) => {
+        if(newPosition.length === this._buses.length && bus.id === newPosition[idx].id){
+          this.animateMarker(bus.marker, newPosition[idx], 5000);
+          bus.marker.setIcon( this.iconOption(newPosition[idx]) );
+        }else{
+          this.setMarker(newPosition[idx])
+        }
+      });
+    }
+
+  }
+
+  iconOption(option){
+    return {
+      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+      scale: 5,
+      strokeWeight: 2,
+      strokeColor: '#00F',
+      rotation: option.heading
+    }
   }
 
   setMarker(buses){
-    if(this._buses) this.clear(this._buses);
-
+    if(this._buses) this.clearBuses(this._buses);
+    console.log('buses in bus service:',this._buses);
     this._buses = buses.map( bus => {
-      return new google.maps.Marker({
+      let marker = new google.maps.Marker({
         position: {lat: bus.lat, lng: bus.lng},
-        icon: {
-          path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-          scale: 5,
-          strokeWeight: 2,
-          strokeColor: '#00F',
-          rotation: bus.heading
-        },
+        icon: this.iconOption(bus),
         map: this._map
       });
+
+      return {
+        id: bus.id,
+        marker: marker
+      };
     });
   }
 

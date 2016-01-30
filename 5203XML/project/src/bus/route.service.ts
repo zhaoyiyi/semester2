@@ -1,6 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/distinctUntilChanged';
 import jquery from 'jquery';
 
 
@@ -60,7 +61,7 @@ export class RouteService{
     return this.query( 'routeConfig', `r=${num}`)
       .map( res => {
         let paths = jQuery.parseXML( res.text() ).querySelectorAll('path');
-        return jQuery.makeArray(paths).map( path => {
+        let coords = jQuery.makeArray(paths).map( path => {
           return jQuery.makeArray( path.querySelectorAll('point') ).map( point => {
             return {
               // call it lng so it can be directly used in google map,
@@ -70,6 +71,8 @@ export class RouteService{
             }
           } )
         })
+
+        return {id: num, coords: coords}
       })
   }
 

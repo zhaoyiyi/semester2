@@ -1,4 +1,4 @@
-System.register(['angular2/core', './map.service', 'rxjs/add/operator/distinctUntilChanged'], function(exports_1) {
+System.register(['angular2/core', './map.service', 'rxjs/add/operator/distinctUntilChanged', 'rxjs/add/operator/repeat', 'rxjs/add/operator/debounceTime', 'rxjs/add/operator/delay', 'rxjs/add/observable/interval'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19,7 +19,11 @@ System.register(['angular2/core', './map.service', 'rxjs/add/operator/distinctUn
             function (map_service_1_1) {
                 map_service_1 = map_service_1_1;
             },
-            function (_1) {}],
+            function (_1) {},
+            function (_2) {},
+            function (_3) {},
+            function (_4) {},
+            function (_5) {}],
         execute: function() {
             MapComponent = (function () {
                 function MapComponent(_mapService) {
@@ -34,23 +38,31 @@ System.register(['angular2/core', './map.service', 'rxjs/add/operator/distinctUn
                         this.updateRoute();
                     }
                     if (this.busLocationsStream) {
-                        this.updateBusLocation();
+                        this.drawBuses();
                     }
                 };
                 MapComponent.prototype.updateRoute = function () {
                     var _this = this;
-                    this.routeInfoStream
-                        .distinctUntilChanged()
-                        .subscribe(function (data) { return _this._mapService.drawPath(data); }, function (err) { return console.log(err); }, function () { return console.log('route info updated'); });
+                    this.routeInfoStream.distinctUntilChanged(function (a, b) {
+                        console.log('ab', a, b);
+                        return a.id === b.id;
+                    })
+                        .subscribe(function (data) { return _this._mapService.drawPath(data.coords); });
+                };
+                MapComponent.prototype.drawBuses = function () {
+                    var _this = this;
+                    if (this.busLocations)
+                        this.busLocations.unsubscribe();
+                    this.busLocations = this.busLocationsStream.subscribe(function (data) {
+                        _this._mapService.setMarker(data);
+                    }, function (err) { return console.log(err); }, function () { return _this.updateBusLocation(); });
                 };
                 MapComponent.prototype.updateBusLocation = function () {
                     var _this = this;
-                    this.busLocationsStream
-                        .distinctUntilChanged()
-                        .subscribe(function (data) {
-                        _this._mapService.setMarker(data);
-                        console.log(data);
-                    }, function (err) { return console.log(err); }, function () { return console.log('bus locations updated'); });
+                    this.busLocations = this.busLocationsStream
+                        .delay(10000)
+                        .repeat()
+                        .subscribe(function (data) { return _this._mapService.updateMarker(data); }, function (err) { return console.log(err); }, function () { return console.log('update location finished.'); });
                 };
                 MapComponent = __decorate([
                     core_1.Component({
@@ -67,3 +79,4 @@ System.register(['angular2/core', './map.service', 'rxjs/add/operator/distinctUn
         }
     }
 });
+//# sourceMappingURL=map.component.js.map
