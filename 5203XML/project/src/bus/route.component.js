@@ -33,7 +33,8 @@ System.register(['angular2/core', 'angular2/http', 'angular2/common', './route.s
                     this.routeControl = new common_1.Control('');
                     this.routeChange = new core_1.EventEmitter();
                     this.locationChange = new core_1.EventEmitter();
-                    this.routeControl.valueChanges.subscribe(function (routeNum) {
+                    this.routeControl.valueChanges
+                        .subscribe(function (routeNum) {
                         console.log('selected route: ', routeNum);
                         _this.emitRouteInfo(routeNum);
                         _this.emitBusLocations(routeNum);
@@ -51,21 +52,9 @@ System.register(['angular2/core', 'angular2/http', 'angular2/common', './route.s
                     console.log('emitting route info...');
                     this.routeChange.emit(this._routeService.getRoute(routeNum));
                 };
-                RouteComponent.prototype.getBuses = function (routeNum) {
-                    var out = this._routeService.getBusLocations(routeNum);
-                    return out;
-                };
                 RouteComponent.prototype.emitBusLocations = function (routeNum) {
-                    var _this = this;
-                    if (this.autoUpdate) {
-                        clearInterval(this.autoUpdate);
-                        console.log('route component clear interval');
-                    }
-                    this.locationChange.emit(this.getBuses(routeNum));
-                    this.autoUpdate = setInterval(function () {
-                        console.log('emitting bus locations stream');
-                        _this.locationChange.emit(_this.getBuses(routeNum));
-                    }, 10000);
+                    console.log('emitting bus locations...');
+                    this.locationChange.emit(this._routeService.getBusLocations(routeNum));
                 };
                 RouteComponent = __decorate([
                     core_1.Component({
@@ -82,3 +71,4 @@ System.register(['angular2/core', 'angular2/http', 'angular2/common', './route.s
         }
     }
 });
+//# sourceMappingURL=route.component.js.map
