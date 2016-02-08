@@ -2,9 +2,6 @@
 var_dump($_POST);
 echo '<br />';
 
-
-
-
 $username=$password=$favNumber=$option=$checkbox=$err='';
 
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type ="text/xsl" href="order.xsl" ?>
+<order>
+  <companyName>Company A</companyName>
+  <ourSalesperson>Phil Esposito</ourSalesperson>
+  <item>Production-Class Widget</item>
+  <quantity>16</quantity>
+  <date>
+    <month>1</month>
+    <day>13</day>
+    <year>2003</year>
+  </date>
+  <customerRep>Bill Higgins</customerRep>
+</order>

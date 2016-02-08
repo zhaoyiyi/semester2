@@ -1,0 +1,26 @@
+<orders>
+  <order>
+    <customerid>2364</customerid>
+    <status>pending</status>
+    <item instock="Y" itemid="SD93">
+      <name>Flying By Roller Skates</name>
+      <price>25.00</price>
+      <qty>25</qty>
+    </item>
+    <item instock="N" itemid="B12">
+      <name>Bounce-o Ball</name>
+      <price>.35</price>
+      <qty>150</qty>
+    </item>
+  </order>
+
+  <order>
+    <customerid>5268</customerid>
+    <status>complete</status>
+    <item instock="Y" itemid="Q52">
+      <name>Crash N Burn Skis</name>
+      <price>20</price>
+      <qty>10</qty>
+    </item>
+  </order>
+</orders>

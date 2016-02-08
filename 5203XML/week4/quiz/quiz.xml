@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<syntax>
+  <Message>
+    <To>Bill Gates</To>
+    <Date>August 4, 2003</Date>
+    <Message_From salutation="Mrs.">
+      Belinda Gates
+    </Message_From>
+    <Heading>Reminder
+      <Title>To Check</Title>
+    </Heading>
+    <Message_Body>I need a computer</Message_Body>
+    <Message_End Text="Thank you." />
+  </Message>
+
+</syntax>
+

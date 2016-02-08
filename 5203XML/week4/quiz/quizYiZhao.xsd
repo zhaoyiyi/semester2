@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="syntax" type="syntaxType"/>
+
+  <xs:complexType name="syntaxType">
+    <xs:sequence>
+      <xs:element name="Message" type="MessageType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MessageType">
+    <xs:sequence>
+      <xs:element name="To" type="xs:string"/>
+      <xs:element name="Date" type="xs:string"/>
+      <xs:element name="Message_From" type="Message_FromType"/>
+      <xs:element name="Heading" type="HeadingType"/>
+      <xs:element name="Message_Body" type="xs:string"/>
+      <xs:element name="Message_End" type="Message_EndType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HeadingType" mixed="true">
+    <xs:sequence>
+      <xs:element name="Title" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Message_FromType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="salutation"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="Message_EndType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="Text"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

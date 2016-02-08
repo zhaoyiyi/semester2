@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<catalog>
+  <cd>
+    <title>CD Title 1</title>
+    <artist>CD Artist 1</artist>
+    <country>Canada</country>
+    <company>CD Company 1</company>
+    <price>19.99</price>
+    <year>2001</year>
+    <website>http://www.cnn.com</website>
+  </cd>
+  <cd>
+    <title>CD Title 2</title>
+    <artist>CD Artist 2</artist>
+    <country>USA</country>
+    <company>CD Company 2</company>
+    <price>29.99</price>
+    <year>2002</year>
+    <website>http://www.msn.com</website>
+  </cd>
+  <cd>
+    <title>CD Title 3</title>
+    <artist>CD Artist 3</artist>
+    <country>USA</country>
+    <company>CD Company 3</company>
+    <price>39.99</price>
+    <year>2003</year>
+    <website>http://www.yahoo.com</website>
+  </cd>
+</catalog>
+
+

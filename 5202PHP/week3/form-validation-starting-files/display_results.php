@@ -7,6 +7,7 @@
     $wants_updates = $_POST['wants_updates'];
     $contact_via = $_POST['contact_via'];
     $comments = $_POST['comments'];
+    var_dump($_REQUEST);
 
     // get the rest of the data for the form
 

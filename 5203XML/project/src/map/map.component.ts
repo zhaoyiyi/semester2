@@ -1,6 +1,7 @@
 import {Component, OnInit, OnChanges} from 'angular2/core';
 import {MapService} from './map.service';
 
+
 import {Observable, Subscription} from 'rxjs';
 import * as Rx from 'rxjs/Rx';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -10,61 +11,71 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/observable/interval';
+import 'rxjs/add/operator/pluck';
+
 
 declare var google;
 @Component({
   selector: 'map',
-  template:`
+  template: `
     <div id="map"></div>
+    <p>Current location:{{currentLocation | json}} </p>
   `,
   providers: [MapService],
-  inputs: ['routeInfoStream', 'busLocationsStream']
+  inputs: ['routeInfoStream', 'locationStream', 'testStream']
 })
-export class MapComponent implements OnInit, OnChanges{
-
-  routeInfo: any;
-  routeInfoStream: Observable<any>;
-  busLocations: Subscription;
-  busLocationsStream: Observable<any>;
-  mapName: string = '#map';
+export class MapComponent implements OnInit, OnChanges {
+  public currentLocation: any;
+  public routeInfoStream: Observable<any>;
+  public locationStream: Observable<any>;
+  public testStream: Observable<any>;
+  public busLocations: Subscription;
 
   constructor(private _mapService: MapService) { }
 
-  ngOnInit(){
+  public ngOnInit() {
     this._mapService.loadMap('#map');
+    this._mapService.currentLocation.subscribe(data => this.currentLocation = data);
   }
-  ngOnChanges(){
-    if(this._mapService.isInitialized){
+  public ngOnChanges() {
+    if (this._mapService.isInitialized) {
       this.updateRoute();
     }
-    if(this.busLocationsStream) {
-      this.drawBuses();
+    if ( this.locationStream ) {
+      this.initBuses();
+    }
+    if ( this.testStream ) {
+      // this.test();
     }
   }
-
-  updateRoute(){
-    this.routeInfoStream.
-    distinctUntilChanged( (a, b) => a.id === b.id )
-      .subscribe(data => this._mapService.drawPath(data.coords));
+  public test() {
+    this.testStream.subscribe(data => {
+      this._mapService.testDrawPath(data);
+    });
   }
-
-  drawBuses(){
+  public updateRoute() {
+    this.routeInfoStream
+      .distinctUntilChanged( (a, b) => a.id === b.id )
+      .subscribe( data => {
+        console.log('drawing path');
+        this._mapService.drawPath(data.coords);
+        this._mapService.drawStops(data.stops);
+      });
+  }
+  public initBuses() {
     // unsubscribe the old stream before subscribe the new one
-    if(this.busLocations) this.busLocations.unsubscribe();
+    if (this.busLocations) this.busLocations.unsubscribe();
 
-    this.busLocations = this.busLocationsStream.subscribe(
-      data => {
-        this._mapService.setMarker(data)
+    this.busLocations = this.locationStream
+      .subscribe( data => {
+        this._mapService.drawBuses(data);
       },
       err => console.log(err),
       () => this.updateBusLocation()
     );
   }
-  updateBusLocation(){
-    // Rx.Observable
-      // .interval(10000)
-      // .mergeMap(x => this.busLocationsStream)
-    this.busLocations = this.busLocationsStream
+  public updateBusLocation() {
+    this.busLocations = this.locationStream
       .delay(10000)
       .repeat()
       .subscribe(
@@ -73,5 +84,4 @@ export class MapComponent implements OnInit, OnChanges{
         () => console.log('update location finished.')
       );
   }
-
 }// end
