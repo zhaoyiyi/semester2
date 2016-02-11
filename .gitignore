@@ -1,4 +1,6 @@
 /5204ASP.NET/projects/**/[Ss]cripts/
+/5204ASP.NET/projects/**/[Ff]onts/
+/5204ASP.NET/projects/**/Content/
 /5203XML/project/stops/stops.txt
 /.idea
 */node_modules/
