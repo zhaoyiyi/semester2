@@ -1,6 +1,6 @@
 <?php
 
-
+var_dump($_REQUEST);
 $radios = ['1', '2', '3', '4', '5'];
 
 if( isset($_POST['btnLogin']) ){

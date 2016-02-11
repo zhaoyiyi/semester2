@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Objects>
+  <Object name="Car">
+    <Characteristic>Hard</Characteristic>
+    <Characteristic>Shiny</Characteristic>
+    <Characteristic>Has 4 wheels</Characteristic>
+    <Characteristic>Internal Combustion Engine</Characteristic>
+  </Object>
+  <Object name="Orange">
+    <Characteristic>Fruit</Characteristic>
+    <Characteristic>Juicy</Characteristic>
+    <Characteristic>Dimpled skin</Characteristic>
+    <Characteristic>Citrus</Characteristic>
+  </Object>
+  <Object name="Giraffe">
+    <Characteristic>Tall</Characteristic>
+    <Characteristic>Four legs</Characteristic>
+    <Characteristic>Big spots</Characteristic>
+    <Characteristic>Mammal</Characteristic>
+  </Object>
+  <Object name="Prawn Cracker">
+    <Characteristic>Crisp</Characteristic>
+    <Characteristic>Savoury</Characteristic>
+    <Characteristic>Off white</Characteristic>
+    <Characteristic>Edible</Characteristic>
+  </Object>
+</Objects>

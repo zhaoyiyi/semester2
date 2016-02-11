@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="Characters.xslt" ?>
+<Characters>
+  <Character age="99">Julius Caesar</Character>
+  <Character age="23">Anne Boleyn</Character>
+  <Character age="41">George Washington</Character>
+  <Character age="45">Martin Luther</Character>
+  <Character age="800">Methuselah</Character>
+  <Character age="119">Moses</Character>
+  <Character age="50">Asterix the Gaul</Character>
+</Characters>

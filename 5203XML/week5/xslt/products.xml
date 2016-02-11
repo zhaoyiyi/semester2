@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<catalog>
+  <row id="1">
+    <category>Beverages</category>
+    <product>
+      <name>Chai</name>
+      <price>18.0000</price>
+    </product>
+  </row>
+  <row id="2">
+    <category>Beverages</category>
+    <product>
+      <name>Chang</name>
+      <price>19.0000</price>
+    </product>
+  </row>
+  <row id="39">
+    <category>Beverages</category>
+    <product>
+      <name>Chartreuse verte</name>
+      <price>18.0000</price>
+    </product>
+  </row>
+  <row id="38">
+    <category>Beverages</category>
+    <product>
+      <name>Côte de Blaye</name>
+      <price>263.5000</price>
+    </product>
+  </row>
+  <row id="24">
+    <category>Beverages</category>
+    <product>
+      <name>Guaraná Fantástica</name>
+      <price>4.5000</price>
+    </product>
+  </row>
+  <row id="43">
+    <category>Beverages</category>
+    <product>
+      <name>Ipoh Coffee</name>
+      <price>46.0000</price>
+    </product>
+  </row>
+  <row id="76">
+    <category>Beverages</category>
+    <product>
+      <name>Lakkalikööri</name>
+      <price>18.0000</price>
+    </product>
+  </row>
+  <row id="67">
+    <category>Beverages</category>
+    <product>
+      <name>Laughing Lumberjack Lager</name>
+      <price>14.0000</price>
+    </product>
+  </row>
+  <row id="70">
+    <category>Beverages</category>
+    <product>
+      <name>Outback Lager</name>
+      <price>15.0000</price>
+    </product>
+  </row>
+  <row id="75">
+    <category>Beverages</category>
+    <product>
+      <name>Rhönbräu Klosterbier</name>
+      <price>7.7500</price>
+    </product>
+  </row>
+  <row id="34">
+    <category>Beverages</category>
+    <product>
+      <name>Sasquatch Ale</name>
+      <price>14.0000</price>
+    </product>
+  </row>
+  <row id="35">
+    <category>Beverages</category>
+    <product>
+      <name>Steeleye Stout</name>
+      <price>18.0000</price>
+    </product>
+  </row>
+  <row id="3">
+    <category>Condiments</category>
+    <product>
+      <name>Aniseed Syrup</name>
+      <price>10.0000</price>
+    </product>
+  </row>
+  <row id="4">
+    <category>Condiments</category>
+    <product>
+      <name>Chef Anton's Cajun Seasoning</name>
+      <price>22.0000</price>
+    </product>
+  </row>
+  <row id="5">
+    <category>Condiments</category>
+    <product>
+      <name>Chef Anton's Gumbo Mix</name>
+      <price>21.3500</price>
+    </product>
+  </row>
+  <row id="15">
+    <category>Condiments</category>
+    <product>
+      <name>Genen Shouyu</name>
+      <price>15.5000</price>
+    </product>
+  </row>
+  <row id="6">
+    <category>Condiments</category>
+    <product>
+      <name>Grandma's Boysenberry Spread</name>
+      <price>25.0000</price>
+    </product>
+  </row>
+  <row id="44">
+    <category>Condiments</category>
+    <product>
+      <name>Gula Malacca</name>
+      <price>19.4500</price>
+    </product>
+  </row>
+  <row id="65">
+    <category>Condiments</category>
+    <product>
+      <name>Louisiana Fiery Hot Pepper Sauce</name>
+      <price>21.0500</price>
+    </product>
+  </row>
+  <row id="66">
+    <category>Condiments</category>
+    <product>
+      <name>Louisiana Hot Spiced Okra</name>
+      <price>17.0000</price>
+    </product>
+  </row>
+  <row id="8">
+    <category>Condiments</category>
+    <product>
+      <name>Northwoods Cranberry Sauce</name>
+      <price>40.0000</price>
+    </product>
+  </row>
+  <row id="77">
+    <category>Condiments</category>
+    <product>
+      <name>Original Frankfurter grüne Soße</name>
+      <price>13.0000</price>
+    </product>
+  </row>
+  <row id="61">
+    <category>Condiments</category>
+    <product>
+      <name>Sirop d'érable</name>
+      <price>28.5000</price>
+    </product>
+  </row>
+  <row id="63">
+    <category>Condiments</category>
+    <product>
+      <name>Vegie-spread</name>
+      <price>43.9000</price>
+    </product>
+  </row>
+  <row id="48">
+    <category>Confections</category>
+    <product>
+      <name>Chocolade</name>
+      <price>12.7500</price>
+    </product>
+  </row>
+  <row id="26">
+    <category>Confections</category>
+    <product>
+      <name>Gumbär Gummibärchen</name>
+      <price>31.2300</price>
+    </product>
+  </row>
+  <row id="49">
+    <category>Confections</category>
+    <product>
+      <name>Maxilaku</name>
+      <price>20.0000</price>
+    </product>
+  </row>
+  <row id="25">
+    <category>Confections</category>
+    <product>
+      <name>NuNuCa Nuß-Nougat-Creme</name>
+      <price>14.0000</price>
+    </product>
+  </row>
+  <row id="16">
+    <category>Confections</category>
+    <product>
+      <name>Pavlova</name>
+      <price>17.4500</price>
+    </product>
+  </row>
+  <row id="27">
+    <category>Confections</category>
+    <product>
+      <name>Schoggi Schokolade</name>
+      <price>43.9000</price>
+    </product>
+  </row>
+  <row id="68">
+    <category>Confections</category>
+    <product>
+      <name>Scottish Longbreads</name>
+      <price>12.5000</price>
+    </product>
+  </row>
+  <row id="20">
+    <category>Confections</category>
+    <product>
+      <name>Sir Rodney's Marmalade</name>
+      <price>81.0000</price>
+    </product>
+  </row>
+  <row id="21">
+    <category>Confections</category>
+    <product>
+      <name>Sir Rodney's Scones</name>
+      <price>10.0000</price>
+    </product>
+  </row>
+  <row id="62">
+    <category>Confections</category>
+    <product>
+      <name>Tarte au sucre</name>
+      <price>49.3000</price>
+    </product>
+  </row>
+  <row id="19">
+    <category>Confections</category>
+    <product>
+      <name>Teatime Chocolate Biscuits</name>
+      <price>9.2000</price>
+    </product>
+  </row>
+  <row id="50">
+    <category>Confections</category>
+    <product>
+      <name>Valkoinen suklaa</name>
+      <price>16.2500</price>
+    </product>
+  </row>
+  <row id="47">
+    <category>Confections</category>
+    <product>
+      <name>Zaanse koeken</name>
+      <price>9.5000</price>
+    </product>
+  </row>
+  <row id="60">
+    <category>Dairy Products</category>
+    <product>
+      <name>Camembert Pierrot</name>
+      <price>34.0000</price>
+    </product>
+  </row>
+  <row id="71">
+    <category>Dairy Products</category>
+    <product>
+      <name>Flotemysost</name>
+      <price>21.5000</price>
+    </product>
+  </row>
+  <row id="33">
+    <category>Dairy Products</category>
+    <product>
+      <name>Geitost</name>
+      <price>2.5000</price>
+    </product>
+  </row>
+  <row id="31">
+    <category>Dairy Products</category>
+    <product>
+      <name>Gorgonzola Telino</name>
+      <price>12.5000</price>
+    </product>
+  </row>
+  <row id="69">
+    <category>Dairy Products</category>
+    <product>
+      <name>Gudbrandsdalsost</name>
+      <price>36.0000</price>
+    </product>
+  </row>
+  <row id="32">
+    <category>Dairy Products</category>
+    <product>
+      <name>Mascarpone Fabioli</name>
+      <price>32.0000</price>
+    </product>
+  </row>
+  <row id="72">
+    <category>Dairy Products</category>
+    <product>
+      <name>Mozzarella di Giovanni</name>
+      <price>34.8000</price>
+    </product>
+  </row>
+  <row id="11">
+    <category>Dairy Products</category>
+    <product>
+      <name>Queso Cabrales</name>
+      <price>21.0000</price>
+    </product>
+  </row>
+  <row id="12">
+    <category>Dairy Products</category>
+    <product>
+      <name>Queso Manchego La Pastora</name>
+      <price>38.0000</price>
+    </product>
+  </row>
+  <row id="59">
+    <category>Dairy Products</category>
+    <product>
+      <name>Raclette Courdavault</name>
+      <price>55.0000</price>
+    </product>
+  </row>
+  <row id="52">
+    <category>Grains/Cereals</category>
+    <product>
+      <name>Filo Mix</name>
+      <price>7.0000</price>
+    </product>
+  </row>
+  <row id="56">
+    <category>Grains/Cereals</category>
+    <product>
+      <name>Gnocchi di nonna Alice</name>
+      <price>38.0000</price>
+    </product>
+  </row>
+  <row id="22">
+    <category>Grains/Cereals</category>
+    <product>
+      <name>Gustaf's Knäckebröd</name>
+      <price>21.0000</price>
+    </product>
+  </row>
+  <row id="57">
+    <category>Grains/Cereals</category>
+    <product>
+      <name>Ravioli Angelo</name>
+      <price>19.5000</price>
+    </product>
+  </row>
+  <row id="42">
+    <category>Grains/Cereals</category>
+    <product>
+      <name>Singaporean Hokkien Fried Mee</name>
+      <price>14.0000</price>
+    </product>
+  </row>
+  <row id="23">
+    <category>Grains/Cereals</category>
+    <product>
+      <name>Tunnbröd</name>
+      <price>9.0000</price>
+    </product>
+  </row>
+  <row id="64">
+    <category>Grains/Cereals</category>
+    <product>
+      <name>Wimmers gute Semmelknödel</name>
+      <price>33.2500</price>
+    </product>
+  </row>
+  <row id="17">
+    <category>Meat/Poultry</category>
+    <product>
+      <name>Alice Mutton</name>
+      <price>39.0000</price>
+    </product>
+  </row>
+  <row id="9">
+    <category>Meat/Poultry</category>
+    <product>
+      <name>Mishi Kobe Niku</name>
+      <price>97.0000</price>
+    </product>
+  </row>
+  <row id="55">
+    <category>Meat/Poultry</category>
+    <product>
+      <name>Pâté chinois</name>
+      <price>24.0000</price>
+    </product>
+  </row>
+  <row id="53">
+    <category>Meat/Poultry</category>
+    <product>
+      <name>Perth Pasties</name>
+      <price>32.8000</price>
+    </product>
+  </row>
+  <row id="29">
+    <category>Meat/Poultry</category>
+    <product>
+      <name>Thüringer Rostbratwurst</name>
+      <price>123.7900</price>
+    </product>
+  </row>
+  <row id="54">
+    <category>Meat/Poultry</category>
+    <product>
+      <name>Tourtière</name>
+      <price>7.4500</price>
+    </product>
+  </row>
+  <row id="74">
+    <category>Produce</category>
+    <product>
+      <name>Longlife Tofu</name>
+      <price>10.0000</price>
+    </product>
+  </row>
+  <row id="51">
+    <category>Produce</category>
+    <product>
+      <name>Manjimup Dried Apples</name>
+      <price>53.0000</price>
+    </product>
+  </row>
+  <row id="28">
+    <category>Produce</category>
+    <product>
+      <name>Rössle Sauerkraut</name>
+      <price>45.6000</price>
+    </product>
+  </row>
+  <row id="14">
+    <category>Produce</category>
+    <product>
+      <name>Tofu</name>
+      <price>23.2500</price>
+    </product>
+  </row>
+  <row id="7">
+    <category>Produce</category>
+    <product>
+      <name>Uncle Bob's Organic Dried Pears</name>
+      <price>30.0000</price>
+    </product>
+  </row>
+  <row id="40">
+    <category>Seafood</category>
+    <product>
+      <name>Boston Crab Meat</name>
+      <price>18.4000</price>
+    </product>
+  </row>
+  <row id="18">
+    <category>Seafood</category>
+    <product>
+      <name>Carnarvon Tigers</name>
+      <price>62.5000</price>
+    </product>
+  </row>
+  <row id="58">
+    <category>Seafood</category>
+    <product>
+      <name>Escargots de Bourgogne</name>
+      <price>13.2500</price>
+    </product>
+  </row>
+  <row id="37">
+    <category>Seafood</category>
+    <product>
+      <name>Gravad lax</name>
+      <price>26.0000</price>
+    </product>
+  </row>
+  <row id="10">
+    <category>Seafood</category>
+    <product>
+      <name>Ikura</name>
+      <price>31.0000</price>
+    </product>
+  </row>
+  <row id="36">
+    <category>Seafood</category>
+    <product>
+      <name>Inlagd Sill</name>
+      <price>19.0000</price>
+    </product>
+  </row>
+  <row id="41">
+    <category>Seafood</category>
+    <product>
+      <name>Jack's New England Clam Chowder</name>
+      <price>9.6500</price>
+    </product>
+  </row>
+  <row id="13">
+    <category>Seafood</category>
+    <product>
+      <name>Konbu</name>
+      <price>6.0000</price>
+    </product>
+  </row>
+  <row id="30">
+    <category>Seafood</category>
+    <product>
+      <name>Nord-Ost Matjeshering</name>
+      <price>25.8900</price>
+    </product>
+  </row>
+  <row id="73">
+    <category>Seafood</category>
+    <product>
+      <name>Röd Kaviar</name>
+      <price>15.0000</price>
+    </product>
+  </row>
+  <row id="45">
+    <category>Seafood</category>
+    <product>
+      <name>Rogede sild</name>
+      <price>9.5000</price>
+    </product>
+  </row>
+  <row id="46">
+    <category>Seafood</category>
+    <product>
+      <name>Spegesild</name>
+      <price>12.0000</price>
+    </product>
+  </row>
+</catalog>

@@ -1,0 +1,20 @@
+﻿<Book>
+  <Title>Beginning XML, 4th Edition</Title>
+  <Authors>
+    <Author>David Hunter</Author>
+    <Author>Danny Ayers</Author>
+    <Author>Jeff Rafter</Author>
+    <Author>John Duckett</Author>
+    <Author>Eric van der Vlist</Author>
+    <Author>Andrew Watt</Author>
+    <Author>Joe Fawcett</Author>
+  </Authors>
+  <Year>2007</Year>
+  <Chapters>
+    <Chapter number="1" title="What is XML?">XML is a markup language, derived from SGML.</Chapter>
+    <Chapter number="2" title="Well-formed XML">To be well-formed an XML document must satisfy several rules about its structure.</Chapter>
+    <Chapter number="3" title="Namespaces">To help unambiguously identify the names of elements and attributes the notion of an XML namespace is used.</Chapter>
+    <Chapter number="4" title="DTD">A document type definition, DTD, is a way to specify the permitted structure of an XML document.</Chapter>
+    <Chapter number="5" title="Schemas">W3C XML Schema and Relax NG are two schema languages to specify the structure of XML documents.</Chapter>
+  </Chapters>
+</Book>
